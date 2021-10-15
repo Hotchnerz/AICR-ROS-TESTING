@@ -5,12 +5,12 @@
 
 
 #define enA 10
-#define in1 7
-#define in2 6
+#define in1 6
+#define in2 7
 
 #define enB 9
-#define in3 4
-#define in4 5
+#define in3 5
+#define in4 4
 
 
 double w_r=0, w_l=0;
