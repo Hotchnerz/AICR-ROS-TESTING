@@ -3,11 +3,11 @@
 #include <Encoder.h>
 
 
-#define leftEncA 10
-#define leftEncB 10
+#define leftEncA 3
+#define leftEncB 5
 
-#define rightEncA 10
-#define rightEncB 10
+#define rightEncA 2
+#define rightEncB 4
 
 #define TICKS_PER_CM 350
 
@@ -27,20 +27,6 @@ volatile double leftSpeed = 0;
 
 int i =0;
 
-//Florentin Functions
-void timerInterrupt(){
-  leftEncoder = leftEnc.read();
-  changeLeftEncoder = leftEncoder - prevLeftEncoder;
-  changeLeftCentimeters = changeLeftEncoder/TICKS_PER_CM;
-  leftSpeed = changeLeftCentimeters/0.05; //Distance over time -- time is 50ms
-
-  Serial.print(i);
-  Serial.print(",");
-  Serial.println(leftSpeed);
-}
-
-
-
 void setup() {
   Timer1.attachInterrupt(timerInterrupt);
   Timer1.start(50000);
@@ -54,4 +40,15 @@ void loop() {
     delay(2000);
   }
 
+}
+
+void timerInterrupt(){
+  leftEncoder = leftEnc.read();
+  changeLeftEncoder = leftEncoder - prevLeftEncoder;
+  changeLeftCentimeters = changeLeftEncoder/TICKS_PER_CM;
+  leftSpeed = changeLeftCentimeters/0.05; //Distance over time -- time is 50ms
+
+  Serial.print(i);
+  Serial.print(",");
+  Serial.println(leftSpeed);
 }
